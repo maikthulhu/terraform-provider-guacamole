@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	guac "github.com/techBeck03/guacamole-api-client"
+	guac "github.com/maikthulhu/guacamole-api-client"
 )
 
 // Provider -

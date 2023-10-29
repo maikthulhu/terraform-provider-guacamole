@@ -1,10 +1,10 @@
-module github.com/techBeck03/terraform-provider-guacamole
+module github.com/maikthulhu/terraform-provider-guacamole
 
 go 1.19
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
-	github.com/techBeck03/guacamole-api-client v1.4.1
+	github.com/maikthulhu/guacamole-api-client v1.4.2
 )
 
 require (

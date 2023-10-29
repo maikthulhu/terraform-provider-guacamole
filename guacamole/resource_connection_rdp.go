@@ -8,8 +8,8 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	guac "github.com/techBeck03/guacamole-api-client"
-	types "github.com/techBeck03/guacamole-api-client/types"
+	guac "github.com/maikthulhu/guacamole-api-client"
+	types "github.com/maikthulhu/guacamole-api-client/types"
 )
 
 func guacamoleConnectionRDP() *schema.Resource {
@@ -562,9 +562,9 @@ func guacamoleConnectionRDP() *schema.Resource {
 				},
 			},
 		},
-                Importer: &schema.ResourceImporter{
-                        StateContext: schema.ImportStatePassthroughContext,
-                },
+		Importer: &schema.ResourceImporter{
+			StateContext: schema.ImportStatePassthroughContext,
+		},
 	}
 }
 
