@@ -66,6 +66,11 @@ func Provider() *schema.Provider {
 				Sensitive:   true,
 				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_DISABLE_COOKIES", false),
 			},
+			"authorization_header": {
+				Type:      schema.TypeString,
+				Optional:  true,
+				Sensitive: true,
+			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"guacamole_user":                  guacamoleUser(),
@@ -99,6 +104,7 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 	data_source := d.Get("data_source").(string)
 	disableTLS := d.Get("disable_tls_verification").(bool)
 	disableCookies := d.Get("disable_cookies").(bool)
+	authorizationHeader := d.Get("authorization_header").(string)
 
 	cookies := make(map[string]string)
 	cookieMap := d.Get("cookies").(map[string]interface{})
@@ -120,6 +126,7 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 		Cookies:                cookies,
 		DisableTLSVerification: disableTLS,
 		DisableCookies:         disableCookies,
+		AuthorizationHeader:    authorizationHeader,
 	}
 
 	// Check for required provider parameters
