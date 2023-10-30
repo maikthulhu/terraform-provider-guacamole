@@ -129,6 +129,8 @@ github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348/go.mod h1:B69LE
 github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0SNc=
 github.com/maikthulhu/guacamole-api-client v1.4.2 h1:cUcLHhIeMwQRhZu9V2lp3PQI9lFt1TsArKt428oDz74=
 github.com/maikthulhu/guacamole-api-client v1.4.2/go.mod h1:cCXG0U2qVIONsQWMgAt2GguP9+rhMi+/L0bPUfhNgQ0=
+github.com/maikthulhu/guacamole-api-client v1.5.1-RC1 h1:OBgpDMnSGa0TY+c4RDM3Q/0j5CWqeaXwH7ABNWonFwM=
+github.com/maikthulhu/guacamole-api-client v1.5.1-RC1/go.mod h1:cCXG0U2qVIONsQWMgAt2GguP9+rhMi+/L0bPUfhNgQ0=
 github.com/matryer/is v1.2.0/go.mod h1:2fLPjFQM9rhQ15aVEtbuwhJinnOqrmgXPNdZsdwlWXA=
 github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-colorable v0.1.12 h1:jF+Du6AlPIjs2BiUiQlKOX0rt3SujHxPnksPKZbaA40=

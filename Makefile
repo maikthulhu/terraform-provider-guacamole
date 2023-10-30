@@ -1,9 +1,9 @@
 TEST?=$$(go list ./... | grep -v 'vendor')
-HOSTNAME=techBeck03.com
-NAMESPACE=techbeck03
+HOSTNAME=halfzero.net
+NAMESPACE=maikthulhu
 NAME=guacamole
 BINARY=terraform-provider-${NAME}
-VERSION=0.0.1
+VERSION=1.5.1-RC1
 OS_ARCH=darwin_amd64
 
 default: install
