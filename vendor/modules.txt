@@ -144,7 +144,7 @@ github.com/hashicorp/terraform-svchost
 # github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d
 ## explicit
 github.com/hashicorp/yamux
-# github.com/maikthulhu/guacamole-api-client v1.5.1-RC1
+# github.com/maikthulhu/guacamole-api-client v1.5.1-rc.1
 ## explicit; go 1.15
 github.com/maikthulhu/guacamole-api-client
 github.com/maikthulhu/guacamole-api-client/types

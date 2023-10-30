@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
-	github.com/maikthulhu/guacamole-api-client v1.5.1-RC1
+	github.com/maikthulhu/guacamole-api-client v1.5.1-rc.1
 )
 
 require (

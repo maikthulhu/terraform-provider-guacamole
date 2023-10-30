@@ -3,7 +3,7 @@ HOSTNAME=halfzero.net
 NAMESPACE=maikthulhu
 NAME=guacamole
 BINARY=terraform-provider-${NAME}
-VERSION=1.5.1-RC1
+VERSION=1.5.1-rc.1
 OS_ARCH=darwin_amd64
 
 default: install
