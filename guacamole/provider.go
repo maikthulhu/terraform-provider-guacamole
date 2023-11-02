@@ -67,9 +67,10 @@ func Provider() *schema.Provider {
 				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_DISABLE_COOKIES", false),
 			},
 			"authorization_header": {
-				Type:      schema.TypeString,
-				Optional:  true,
-				Sensitive: true,
+				Type:        schema.TypeString,
+				Optional:    true,
+				Sensitive:   true,
+				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_AUTHORIZATION_HEADER", nil),
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
@@ -80,6 +81,7 @@ func Provider() *schema.Provider {
 			"guacamole_connection_rdp":        guacamoleConnectionRDP(),
 			"guacamole_connection_vnc":        guacamoleConnectionVNC(),
 			"guacamole_connection_kubernetes": guacamoleConnectionKubernetes(),
+			"guacamole_connection_guacd":      guacamoleConnectionGuacd(),
 			"guacamole_connection_group":      guacamoleConnectionGroup(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
@@ -90,6 +92,7 @@ func Provider() *schema.Provider {
 			"guacamole_connection_rdp":        dataSourceConnectionRDP(),
 			"guacamole_connection_vnc":        dataSourceConnectionVNC(),
 			"guacamole_connection_kubernetes": dataSourceConnectionKubernetes(),
+			"guacamole_connection_guacd":      dataSourceConnectionGuacd(),
 			"guacamole_connection_group":      dataSourceConnectionGroup(),
 		},
 		ConfigureContextFunc: providerConfigure,
