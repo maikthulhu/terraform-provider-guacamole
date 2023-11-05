@@ -33,7 +33,9 @@ func testAccPreCheck(t *testing.T) {
 	}
 	if err := os.Getenv("GUACAMOLE_PASSWORD"); err == "" {
 		if os.Getenv("GUACAMOLE_TOKEN") == "" {
-			t.Fatal("GUACAMOLE_PASSWORD or GUACAMOLE_TOKEN must be set for acceptance tests")
+			if os.Getenv("GUACAMOLE_AUTHORIZATION_HEADER") == "" {
+				t.Fatal("GUACAMOLE_PASSWORD or GUACAMOLE_TOKEN or GUACAMOLE_AUTHORIZATION_HEADER must be set for acceptance tests")
+			}
 		}
 	} else {
 		if os.Getenv("GUACAMOLE_USERNAME") == "" {
@@ -43,6 +45,11 @@ func testAccPreCheck(t *testing.T) {
 	if err := os.Getenv("GUACAMOLE_TOKEN"); err != "" {
 		if os.Getenv("GUACAMOLE_DATA_SOURCE") == "" {
 			t.Fatal("GUACAMOLE_DATA_SOURCE must be set for acceptance tests when GUACAMOLE_TOKEN is provided")
+		}
+	}
+	if os.Getenv("GUACAMOLE_DATA_SOURCE") == "header" {
+		if os.Getenv("GUACAMOLE_AUTHORIZATION_HEADER") == "" {
+			t.Fatal("GUACAMOLE_AUTHORIZATION_HEADER must be set for acceptance tests when GUACAMOLE_DATA_SOURCE is 'header'")
 		}
 	}
 }

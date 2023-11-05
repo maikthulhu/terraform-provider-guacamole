@@ -29,22 +29,23 @@ func Provider() *schema.Provider {
 				Type:         schema.TypeString,
 				Optional:     true,
 				RequiredWith: []string{"username"},
-				AtLeastOneOf: []string{"password", "token"},
+				AtLeastOneOf: []string{"password", "token", "authorization_header"},
 				Sensitive:    true,
 				DefaultFunc:  schema.EnvDefaultFunc("GUACAMOLE_PASSWORD", nil),
 			},
 			"token": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				AtLeastOneOf: []string{"password", "token"},
+				AtLeastOneOf: []string{"password", "token", "authorization_header"},
 				Sensitive:    true,
 				DefaultFunc:  schema.EnvDefaultFunc("GUACAMOLE_TOKEN", nil),
 			},
 			"authorization_header": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Sensitive:   true,
-				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_AUTHORIZATION_HEADER", nil),
+				Type:         schema.TypeString,
+				Optional:     true,
+				AtLeastOneOf: []string{"password", "token", "authorization_header"},
+				Sensitive:    true,
+				DefaultFunc:  schema.EnvDefaultFunc("GUACAMOLE_AUTHORIZATION_HEADER", nil),
 			},
 			"data_source": {
 				Type:             schema.TypeString,
@@ -168,11 +169,11 @@ func validate(config guac.Config) diag.Diagnostics {
 			Detail:   "URL must be configured for the guacamole provider",
 		})
 	}
-	if config.Password == "" && config.Token == "" {
+	if config.Password == "" && config.Token == "" && config.AuthorizationHeader == "" {
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
 			Summary:  "Missing provider parameter",
-			Detail:   "Either username/password or token/data_source must be configured for the guacamole provider",
+			Detail:   "Either username/password, token/data_source, or authorization_header must be configured for the guacamole provider",
 		})
 	}
 	return diags
