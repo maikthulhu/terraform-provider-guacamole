@@ -40,11 +40,17 @@ func Provider() *schema.Provider {
 				Sensitive:    true,
 				DefaultFunc:  schema.EnvDefaultFunc("GUACAMOLE_TOKEN", nil),
 			},
+			"authorization_header": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				Sensitive:   true,
+				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_AUTHORIZATION_HEADER", nil),
+			},
 			"data_source": {
 				Type:             schema.TypeString,
 				Optional:         true,
-				RequiredWith:     []string{"token"},
-				ValidateDiagFunc: validation.ToDiagFunc(validation.StringInSlice([]string{"postgresql", "mysql"}, true)),
+				AtLeastOneOf:     []string{"token", "authorization_header"},
+				ValidateDiagFunc: validation.ToDiagFunc(validation.StringInSlice([]string{"postgresql", "mysql", "header"}, true)),
 				DefaultFunc:      schema.EnvDefaultFunc("GUACAMOLE_DATA_SOURCE", nil),
 			},
 			"cookies": {
@@ -65,12 +71,6 @@ func Provider() *schema.Provider {
 				Optional:    true,
 				Sensitive:   true,
 				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_DISABLE_COOKIES", false),
-			},
-			"authorization_header": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Sensitive:   true,
-				DefaultFunc: schema.EnvDefaultFunc("GUACAMOLE_AUTHORIZATION_HEADER", nil),
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
